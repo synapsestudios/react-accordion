@@ -12,7 +12,7 @@ panels = arrayOf{
 }
 toggleSpeed  = {400},
 toggleHeight = {40},
-customClass  = 'ClassName'
+className    = 'accordion__className'
 ```
 
 Require the component using `var Accordion = require('react-accordion')` with the option to include styles by pathing directly to `/scss/accordion`.
