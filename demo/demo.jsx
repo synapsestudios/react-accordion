@@ -1,9 +1,20 @@
 'use strict';
 
-var React  = require('react');
-var Alert  = require('./dist/accordion');
+var React     = require('react');
+var Accordion = require('../src/accordion');
 
-require('./scss/accordion');
+require('../scss/accordion');
+
+var examplePanels = [
+    {
+        title   : 'Example Panel 1',
+        message : 'Example Message Here'
+    },
+    {
+        title   : 'Example Panel 2',
+        message : 'Example Message Here'
+    }
+];
 
 module.exports = React.createClass({
 
@@ -17,7 +28,7 @@ module.exports = React.createClass({
 
         return (
             <div style={styles}>
-                <Accordion />
+                <Accordion panels={examplePanels} />
             </div>
         );
     }

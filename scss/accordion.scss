@@ -1,0 +1,58 @@
+// *******************************************
+// *******************************************
+
+    // Styling for Accordion Component
+
+// *******************************************
+// *******************************************
+/*
+*
+*<div class='accordion__wrapper'>
+*    <div className='accordion__item'>
+*        <div>
+*             {Header}
+*        </div>
+*        {Content}
+*   </div>
+*</div>
+*
+*/
+
+.accordion {
+
+    &__item {
+        position      : relative;
+        overflow      : hidden;
+        border-radius : rem-calc(3);
+        margin-bottom : rem-calc(5);
+        border        : 1px solid $grey--200;
+        font-family   : $sans;
+
+        &__click {
+            position         : relative;
+                z-index      : $stack-mid;
+            height           : rem-calc(40);
+            cursor           : pointer;
+        }
+
+        &__header {
+            position         : absolute;
+                top          : 0;
+                left         : 0;
+                right        : 0;
+                z-index      : $stack-bot;
+            width            : 100%;
+            height           : rem-calc(40);
+            padding          : rem-calc(10);
+            background-color : $grey--100;
+        }
+
+        &__content {
+            padding    : rem-calc(10);
+            background : $white;
+            font-size  : rem-calc(14);
+        }
+
+    }
+
+}

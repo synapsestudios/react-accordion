@@ -8,7 +8,7 @@ module.exports = React.createClass({
 
     propTypes: {
         message : React.PropTypes.string,
-        title   : React.PropTypes.string
+        title   : React.PropTypes.string,
         onClick : React.PropTypes.func
     },
 

@@ -2,7 +2,7 @@
 
 var React        = require('react/addons');
 var AnimateMixin = require('react-animate');
-var PanelItem    = require('accordion-panel');
+var PanelItem    = require('./accordion-panel');
 
 module.exports = React.createClass({
 
@@ -13,7 +13,7 @@ module.exports = React.createClass({
     propTypes: {
         panels      : React.PropTypes.arrayOf(React.PropTypes.shape({
             title   : React.PropTypes.string,
-            message : react.React.PropTypes.string
+            message : React.PropTypes.string
         })),
         toggleHeight : React.PropTypes.number
     },
@@ -27,8 +27,10 @@ module.exports = React.createClass({
 
     getInitialState: function()
     {
+        console.log(this.props.panels);
+
         return {
-            animationData : this.getInitialAnimationData(panels.length)
+            animationData : this.getInitialAnimationData(this.props.panels.length)
         };
     },
 
@@ -119,8 +121,6 @@ module.exports = React.createClass({
             style.height = animationData.open ? 'auto' : this.props.toggleHeight + 'px';
         }
 
-        renderMethod = item.type === VEHICLE ? this.renderVehicle : this.renderCargoItem;
-
         return (
             <PanelItem
                 style     = {style}
@@ -142,7 +142,7 @@ module.exports = React.createClass({
 
         return (
             <div className={containerStyle}>
-                {this.panels().map(this.renderItem)}
+                {this.props.panels.map(this.renderItem)}
             </div>
         );
     }
