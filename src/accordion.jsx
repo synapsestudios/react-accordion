@@ -12,9 +12,11 @@ module.exports = React.createClass({
 
     propTypes: {
         panels      : React.PropTypes.arrayOf(React.PropTypes.shape({
-            title   : React.PropTypes.string,
-            message : React.PropTypes.string
+            title          : React.PropTypes.string,
+            message        : React.PropTypes.string,
+            panelClassName : React.PropTypes.string
         })),
+        toggleSpeed  : React.PropTypes.number,
         toggleHeight : React.PropTypes.number,
         className    : React.PropTypes.string
     },
@@ -22,14 +24,13 @@ module.exports = React.createClass({
     getDefaultProps: function()
     {
         return {
+            toggleSpeed  : 400,
             toggleHeight : 40
         };
     },
 
     getInitialState: function()
     {
-        console.log(this.props.panels);
-
         return {
             animationData : this.getInitialAnimationData(this.props.panels.length)
         };
@@ -76,7 +77,7 @@ module.exports = React.createClass({
             id + "toggle",
             {height : currentHeight + "px"},
             {height : newHeight},
-            400,
+            this.props.toggleSpeed,
             {
                 onComplete : function()
                 {
@@ -100,21 +101,16 @@ module.exports = React.createClass({
         return e.target.parentNode.scrollHeight;
     },
 
-    getClassesForType : function(type)
-    {
-        return [
-            'accordion__panel',
-            'accordion__panel--' + type,
-            this.props.itemClassName
-        ].join(' ');
-    },
-
     renderItem : function(item, index)
     {
-        var animationData, style;
+        var animationData, style, panelClass;
 
         animationData = this.state.animationData[index];
         style         = {height:'auto'};
+        panelClass    = [
+            'accordion__panel',
+            this.props.panelClassName
+        ].join(' ');
 
         if (animationData.animating === true) {
             style.height = this.getAnimatedStyle(index + 'toggle').height;
@@ -126,7 +122,7 @@ module.exports = React.createClass({
             <PanelItem
                 style     = {style}
                 onClick   = {this.toggle.bind(this, index)}
-                className = {'accordion__panel'}
+                className = {panelClass}
                 key       = {'accordion-panel-' + index}
                 message   = {item.message}
                 title     = {item.title}

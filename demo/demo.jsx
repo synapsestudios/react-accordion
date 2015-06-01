@@ -3,7 +3,7 @@
 var React     = require('react');
 var Accordion = require('../src/accordion');
 
-require('../scss/app');
+require('../scss/accordion');
 
 var examplePanels = [
     {
