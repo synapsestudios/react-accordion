@@ -5,32 +5,33 @@
 
 // *******************************************
 // *******************************************
-/*
-*
-*<div class='accordion__wrapper'>
-*    <div className='accordion__item'>
-*        <div>
-*             {Header}
-*        </div>
-*        {Content}
-*   </div>
-*</div>
-*
-*/
+//  <div class='accordion__wrapper'>
+//      <div className='accordion__item'>
+//          <div>
+//               {Header}
+//          </div>
+//          {Content}
+//     </div>
+//  </div>
+// *******************************************
+// *******************************************
 
 .accordion {
 
-    &__item {
+    &__panel {
+        position : relative;
+    }
+
+    &__panel {
         position      : relative;
         overflow      : hidden;
         border-radius : rem-calc(3);
         margin-bottom : rem-calc(5);
-        border        : 1px solid $grey--200;
-        font-family   : $sans;
+        border        : 1px solid #eee;
 
         &__click {
             position         : relative;
-                z-index      : $stack-mid;
+                z-index      : 2;
             height           : rem-calc(40);
             cursor           : pointer;
         }
@@ -40,11 +41,11 @@
                 top          : 0;
                 left         : 0;
                 right        : 0;
-                z-index      : $stack-bot;
+                z-index      : 1;
             width            : 100%;
             height           : rem-calc(40);
             padding          : rem-calc(10);
-            background-color : $grey--100;
+            background-color : #f4f4f4;
         }
 
         &__content {

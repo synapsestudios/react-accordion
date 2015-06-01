@@ -15,7 +15,8 @@ module.exports = React.createClass({
             title   : React.PropTypes.string,
             message : React.PropTypes.string
         })),
-        toggleHeight : React.PropTypes.number
+        toggleHeight : React.PropTypes.number,
+        className    : React.PropTypes.string
     },
 
     getDefaultProps: function()
@@ -102,8 +103,8 @@ module.exports = React.createClass({
     getClassesForType : function(type)
     {
         return [
-            'accordion__item',
-            'accordion__item--' + type,
+            'accordion__panel',
+            'accordion__panel--' + type,
             this.props.itemClassName
         ].join(' ');
     },

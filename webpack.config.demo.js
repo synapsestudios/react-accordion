@@ -9,7 +9,7 @@ module.exports = {
     entry: [
         './demo/bootstrap.js',
         'webpack/hot/dev-server',
-        'webpack-dev-server/client?http://localhost:9000'
+        'webpack-dev-server/client?http://localhost:9001'
     ],
     module: {
         loaders: [
