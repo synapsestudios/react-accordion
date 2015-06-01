@@ -18,7 +18,7 @@ module.exports = React.createClass({
         })),
         toggleSpeed  : React.PropTypes.number,
         toggleHeight : React.PropTypes.number,
-        customClass  : React.PropTypes.string
+        className    : React.PropTypes.string
     },
 
     getDefaultProps: function()
@@ -134,7 +134,7 @@ module.exports = React.createClass({
     {
         var containerStyle = [
             'accordion__wrapper',
-            this.props.customClass
+            this.props.className
         ].join(' ');
 
         return (
