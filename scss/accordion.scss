@@ -40,11 +40,11 @@ $accordion-panel-margin-bottom : rem-calc(5);
     $margin-bottom : $accordion-panel-margin-bottom,
     $border        : $accordion-border
 ) {
-    position      :  relative;
-    overflow      :  hidden;
-    border-radius :  $border-radius;
-    margin-bottom :  $margin-bottom;
-    border        :  $border;
+    position      : relative;
+    overflow      : hidden;
+    border-radius : $border-radius;
+    margin-bottom : $margin-bottom;
+    border        : $border;
 }
 
 // @MIXIN
