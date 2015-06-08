@@ -18,44 +18,96 @@
 // *******************************************
 // *******************************************
 
-.accordion {
+// ? export default classes
+$include-accordion-component-classes : true !default;
 
-    &__panel {
-        position : relative;
+$accordion-border : 1px solid #eee;
+$accordion-border-radius : rem-calc(3);
+
+$accordion-panel-header-height     : rem-calc(40);
+$accordion-panel-header-padding    : rem-calc(10);
+$accordion-panel-header-background : shade($white,5%);
+
+$accordion-panel-padding       : rem-calc(10);
+$accordion-panel-background    : $white;
+$accordion-panel-font-size     : rem-calc(14);
+$accordion-panel-margin-bottom : rem-calc(5);
+
+// @MIXIN
+// Accordion panel
+@mixin accordion-panel(
+    $border-radius : $accordion-border-radius,
+    $margin-bottom : $accordion-panel-margin-bottom,
+    $border        : $accordion-border
+) {
+    position      :  relative;
+    overflow      :  hidden;
+    border-radius :  $border-radius;
+    margin-bottom :  $margin-bottom;
+    border        :  $border;
+}
+
+// @MIXIN
+// Accordion panel click
+@mixin accordion-panel-click(
+    $height   : $accordion-panel-header-height
+) {
+    position : relative;
+    z-index  : 2;
+    height   : $height;
+    cursor   : pointer;
+}
+
+// @MIXIN
+// Accordion panel header
+@mixin accordion-panel-header(
+    $height           : $accordion-panel-header-height,
+    $padding          : $accordion-panel-header-padding,
+    $background-color : $accordion-panel-header-background
+) {
+    position         : absolute;
+    top              : 0;
+    left             : 0;
+    right            : 0;
+    z-index          : 1;
+    width            : 100%;
+    height           : $height;
+    padding          : $padding;
+    background-color : $background-color;
+}
+
+// @MIXIN
+// Accordion panel content
+@mixin accordion-panel-content(
+    $padding    : $accordion-panel-padding,
+    $background : $white,
+    $font-size  : $accordion-panel-font-size
+) {
+    padding    : $padding;
+    background : $background;
+    font-size  : $font-size;
+}
+
+@if $include-accordion-component-classes {
+
+    .accordion {
+
+        &__panel {
+            @include accordion-panel;
+
+            &__click {
+                @include accordion-panel-click;
+            }
+
+            &__header {
+                @include accordion-panel-header;
+            }
+
+            &__content {
+                @include accordion-panel-content;
+            }
+
+        }
+
     }
-
-    &__panel {
-        position      : relative;
-        overflow      : hidden;
-        border-radius : rem-calc(3);
-        margin-bottom : rem-calc(5);
-        border        : 1px solid #eee;
-
-        &__click {
-            position         : relative;
-                z-index      : 2;
-            height           : rem-calc(40);
-            cursor           : pointer;
-        }
-
-        &__header {
-            position         : absolute;
-                top          : 0;
-                left         : 0;
-                right        : 0;
-                z-index      : 1;
-            width            : 100%;
-            height           : rem-calc(40);
-            padding          : rem-calc(10);
-            background-color : #f4f4f4;
-        }
-
-        &__content {
-            padding    : rem-calc(10);
-            background : $white;
-            font-size  : rem-calc(14);
-        }
-
-    }
-
 }
