@@ -13,21 +13,22 @@ module.exports = React.createClass({
     propTypes: {
         panels: React.PropTypes.arrayOf(React.PropTypes.shape({
             title: React.PropTypes.string,
-            message: React.PropTypes.string
+            message: React.PropTypes.string,
+            panelClassName: React.PropTypes.string
         })),
+        toggleSpeed: React.PropTypes.number,
         toggleHeight: React.PropTypes.number,
         className: React.PropTypes.string
     },
 
     getDefaultProps: function getDefaultProps() {
         return {
+            toggleSpeed: 400,
             toggleHeight: 40
         };
     },
 
     getInitialState: function getInitialState() {
-        console.log(this.props.panels);
-
         return {
             animationData: this.getInitialAnimationData(this.props.panels.length)
         };
@@ -67,7 +68,7 @@ module.exports = React.createClass({
 
         newHeight = currentHeight >= toggleHeight ? toggleHeight + 'px' : scrollHeight + 'px';
 
-        this.animate(id + 'toggle', { height: currentHeight + 'px' }, { height: newHeight }, 400, {
+        this.animate(id + 'toggle', { height: currentHeight + 'px' }, { height: newHeight }, this.props.toggleSpeed, {
             onComplete: function onComplete() {
                 var newMap = self.state.animationData;
 
@@ -86,15 +87,12 @@ module.exports = React.createClass({
         return e.target.parentNode.scrollHeight;
     },
 
-    getClassesForType: function getClassesForType(type) {
-        return ['accordion__panel', 'accordion__panel--' + type, this.props.itemClassName].join(' ');
-    },
-
     renderItem: function renderItem(item, index) {
-        var animationData, style;
+        var animationData, style, panelClass;
 
         animationData = this.state.animationData[index];
         style = { height: 'auto' };
+        panelClass = ['accordion__panel', this.props.panelClassName].join(' ');
 
         if (animationData.animating === true) {
             style.height = this.getAnimatedStyle(index + 'toggle').height;
@@ -105,7 +103,7 @@ module.exports = React.createClass({
         return React.createElement(PanelItem, {
             style: style,
             onClick: this.toggle.bind(this, index),
-            className: 'accordion__panel',
+            className: panelClass,
             key: 'accordion-panel-' + index,
             message: item.message,
             title: item.title
