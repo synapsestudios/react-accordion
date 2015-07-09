@@ -12,7 +12,7 @@ module.exports = React.createClass({
         onClick : React.PropTypes.func
     },
 
-    render : function()
+    render()
     {
         return (
             <div className={this.props.className} key={this.props.key} style={this.props.style}>

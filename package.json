@@ -16,22 +16,23 @@
     "dependencies": {
         "lodash"          : "3.6.0",
         "react-animate"   : "1.2.4",
-        "synfrastructure" : "git@github.com:synapsestudios/synfrastructure.git"
+        "synfrastructure" : "3.1.3"
     },
     "devDependencies": {
-         "autoprefixer-loader" : "1.2.0",
-         "babel"               : "5.6.14",
-         "babel-loader"        : "5.2.2",
-         "css-loader"          : "0.9.1",
-         "express-http-proxy"  : "0.4.0",
-         "html-webpack-plugin" : "1.1.0",
-         "react"               : "0.12.2",
-         "react-hot-loader"    : "1.1.4",
-         "request"             : "2.53.0",
-         "sass-loader"         : "0.4.2",
-         "style-loader"        : "0.8.3",
-         "underscore"          : "1.6.0",
-         "webpack"             : "1.5.3",
-         "webpack-dev-server"  : "1.7.0"
+        "autoprefixer-core"   : "5.2.0",
+        "babel"               : "5.6.14",
+        "babel-loader": "5.1.4",
+        "css-loader": "0.14.5",
+        "express-http-proxy": "0.4.0",
+        "html-webpack-plugin": "1.5.2",
+        "postcss-loader": "0.5.0",
+        "react": "0.13.3",
+        "react-hot-loader": "1.2.7",
+        "request": "2.58.0",
+        "sass-loader": "1.0.2",
+        "style-loader": "0.12.3",
+        "underscore": "1.8.3",
+        "webpack": "1.9.11",
+        "webpack-dev-server": "1.9.0"
     }
 }

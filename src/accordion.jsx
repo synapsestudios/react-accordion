@@ -1,6 +1,6 @@
 'use strict';
 
-var React        = require('react/addons');
+var React        = require('react');
 var AnimateMixin = require('react-animate');
 var PanelItem    = require('./accordion-panel');
 
@@ -21,7 +21,7 @@ module.exports = React.createClass({
         className    : React.PropTypes.string
     },
 
-    getDefaultProps: function()
+    getDefaultProps()
     {
         return {
             toggleSpeed  : 400,
@@ -29,14 +29,14 @@ module.exports = React.createClass({
         };
     },
 
-    getInitialState: function()
+    getInitialState()
     {
         return {
             animationData : this.getInitialAnimationData(this.props.panels.length)
         };
     },
 
-    getInitialAnimationData : function(numItems)
+    getInitialAnimationData(numItems)
     {
         var animationData = [];
 
@@ -50,14 +50,14 @@ module.exports = React.createClass({
         return animationData;
     },
 
-    componentWillReceiveProps : function(nextProps, nextState)
+    componentWillReceiveProps(nextProps, nextState)
     {
         this.setState({
             animationData : this.getInitialAnimationData(nextProps.panels.length)
         });
     },
 
-    toggle: function(id, e)
+    toggle(id, e)
     {
         var self, currentHeight, scrollHeight, toggleHeight, newHeight, animationData;
 
@@ -79,7 +79,7 @@ module.exports = React.createClass({
             {height : newHeight},
             this.props.toggleSpeed,
             {
-                onComplete : function()
+                onComplete()
                 {
                     var newMap = self.state.animationData;
 
@@ -91,17 +91,17 @@ module.exports = React.createClass({
         );
     },
 
-    getParentHeight : function(e)
+    getParentHeight(e)
     {
         return e.target.parentNode.clientHeight;
     },
 
-    getParentScrollHeight : function(e)
+    getParentScrollHeight(e)
     {
         return e.target.parentNode.scrollHeight;
     },
 
-    renderItem : function(item, index)
+    renderItem(item, index)
     {
         var animationData, style, panelClass;
 
@@ -130,7 +130,7 @@ module.exports = React.createClass({
         );
     },
 
-    render : function()
+    render()
     {
         var containerStyle = [
             'accordion__wrapper',
